@@ -1,0 +1,27 @@
+﻿
+@{
+    Layout = null;
+}
+@model MVCTest.Models.Items
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>home</title>
+
+</head>
+<body>
+    <div class="table">
+        <h3>@ViewBag.home</h3>
+        @foreach(var items in @Model.List)
+        {
+            <div class=" row">
+                <a>@items.Id </a> 
+                <a>@items.Name </a> 
+                <a>@items.Img </a> 
+            </div>
+        }
+    </div>
+</body>
+</html>

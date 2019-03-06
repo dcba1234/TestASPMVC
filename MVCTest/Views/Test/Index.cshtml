@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = null;
+}
+
+@model MVCTest.Models.User
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/CSS/StyleSheet1.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+        <h3>@ViewBag.test</h3>
+        
+        <div class="login">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true,null,new { @class = "alert"})
+                @Html.TextBoxFor(model => model.Id, new { @class = " txt1 ", @placeholder = "Tên đăng nhập", @autofocus = "autofocus" }) <br/>
+                @Html.TextBoxFor(model => model.Pass, new { @class = " txt2 ", @placeholder = "Mật khẩu", @autofocus = "autofocus" })<br />
+            <laber>
+                @Html.CheckBoxFor(model => model.Remember)
+                Nhớ mật khẩu
+            </laber><br />
+
+
+
+
+             <button class="button" type="submit"> Đăng nhập</button>
+            }
+        </div>
+        <div class=" list">
+            
+        </div>
+    </div>
+</body>
+</html>
