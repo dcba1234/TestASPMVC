@@ -3,6 +3,11 @@ using MVCTest.Models;
 using System.Web.Mvc;
 using DAL;
 using Object;
+using PagedList.Mvc;
+using System.Collections.Generic;
+using System.Linq;
+using PagedList;
+
 namespace MVCTest.Controllers
 {
     public class TestController : Controller
@@ -13,7 +18,7 @@ namespace MVCTest.Controllers
 
         public ActionResult Index()
         {
-
+            
 
             if (Session["login"] == null)
             {
@@ -28,15 +33,21 @@ namespace MVCTest.Controllers
 
             return View();
         }
-        public ActionResult home()
+        public ActionResult home(int? page)
         {
-
-            ViewBag.home = "đây là trang home";
-
             Models.Items l = new Models.Items();
             l.List = Login.getData();
+            ViewBag.home = "đây là trang home";
+            if (page == null) page = 1;
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            //IEnumerable<Object.Items> list = l.OrderBy();
 
-            return View(l);
+            Object.Items[] pets = l.List.ToArray();
+
+            IEnumerable<Object.Items> query = pets.OrderBy(pet => pet.Name);
+
+            return View(query.ToPagedList(pageNumber,pageSize));
         }
         public Message GetMessage()
         {

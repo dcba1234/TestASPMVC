@@ -1,8 +1,10 @@
-﻿
+﻿@using Object;
+@using PagedList;
 @{
     Layout = null;
 }
-@model MVCTest.Models.Items
+
+@model PagedList.IPagedList<Object>
 <!DOCTYPE html>
 
 <html>
@@ -14,12 +16,12 @@
 <body>
     <div class="table">
         <h3>@ViewBag.home</h3>
-        @foreach(var items in @Model.List)
+        @foreach (var items in @Model.List)
         {
             <div class=" row">
-                <a>@items.Id </a> 
-                <a>@items.Name </a>  
-                <a>@items.Img </a> 
+                <a>@items.Id </a>
+                <a>@items.Name </a>
+                <a>@items.Img </a>
             </div>
         }
     </div>
