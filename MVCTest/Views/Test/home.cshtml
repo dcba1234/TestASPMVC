@@ -1,29 +1,57 @@
-﻿@using Object;
-@using PagedList;
+﻿
+@using PagedList.Mvc;
 @{
     Layout = null;
-}
 
-@model PagedList.IPagedList<Object>
+}
+@using doiTuong;
+@model MVCTest.Models.Home
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>home</title>
-
+    <link href="~/CSS/StyleSheet1.css" rel="stylesheet" />
 </head>
 <body>
     <div class="table">
         <h3>@ViewBag.home</h3>
-        @foreach (var items in @Model.List)
+
+        <h2> @ViewBag.contents</h2>
+        <div class=" table2">
+            @foreach (var items in Model.List)
+            {
+                <div class=" row">
+                    <a>@items.Id </a>
+                    <a>@items.Name </a>
+                    <a>@items.Img </a>
+                </div>
+            }
+        </div>
+        @Html.PagedListPager(Model.List, page => Url.Action("home", new { page }))
+        @using (Html.BeginForm("Home", "Test", FormMethod.Post))
         {
-            <div class=" row" >  
-                <a>@items.Id </a>
-                <a>@items.Name </a>
-                <a>@items.Img </a>
-            </div>
+        <select name="testSelect">
+            @foreach (var item in ViewBag.list)
+            {
+                <option value="@item.Name">@item.Name</option>
+            }
+        </select>
+            <h2 id=" contents"> đây là cpntennnnn</h2>
+            
+            @Html.TextBoxFor(Model => Model.Item.Name, new { @class = " txt1 ", @placeholder = "Tên đăng nhập", @autofocus = "autofocus" })
+            @Html.TextBoxFor(Model => Model.Item.Img, new { @class = " txt1 ", @placeholder = "Tên đăng nhập", @autofocus = "autofocus" })
+            <button class="button" type="submit"> Đăng nhập</button>
+
         }
+
+
+
+        <div class="nhap">
+
+        </div>
     </div>
+
 </body>
 </html>

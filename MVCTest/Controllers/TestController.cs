@@ -2,7 +2,7 @@
 using MVCTest.Models;
 using System.Web.Mvc;
 using DAL;
-using Object;
+using doiTuong;
 using PagedList.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +18,7 @@ namespace MVCTest.Controllers
 
         public ActionResult Index()
         {
-            
+            ViewBag.test = "Không có sesstion ";
 
             if (Session["login"] == null)
             {
@@ -33,22 +33,48 @@ namespace MVCTest.Controllers
 
             return View();
         }
-        public ActionResult home(int? page)
+        public ActionResult home(int? page,string testSelect)
         {
+            getViewBag();
             Models.Items l = new Models.Items();
             l.List = Login.getData();
-            ViewBag.home = "đây là trang home";
+            ViewBag.home = "đây là trang home" + testSelect;
             if (page == null) page = 1;
-            int pageSize = 3;
+            int pageSize = 5;
             int pageNumber = (page ?? 1);
             //IEnumerable<Object.Items> list = l.OrderBy();
 
-            Object.Items[] pets = l.List.ToArray();
+            doiTuong.Items[] pets = l.List.ToArray();
 
-            IEnumerable<Object.Items> query = pets.OrderBy(pet => pet.Name);
-
-            return View(query.ToPagedList(pageNumber,pageSize));
+            IEnumerable<doiTuong.Items> query = pets.OrderByDescending(pet => pet.Id);
+            Home h = new Home();
+            h.List = query.ToPagedList(pageNumber, pageSize);
+            
+            return View(h);
         }
+        [HttpPost]
+        public ActionResult home(doiTuong.Items item, string testSelect)
+        {
+            getViewBag();
+            
+            Login.insert(item.Name.ToString(), item.Img);
+            ViewBag.home = testSelect;
+            Models.Items l = new Models.Items();
+            l.List = Login.getData();
+            doiTuong.Items[] pets = l.List.ToArray();
+
+            IEnumerable<doiTuong.Items> query = pets.OrderBy(pet => pet.Id);
+
+            Home h = new Home();
+            h.List = query.ToPagedList(1, 5);
+            return View(h);
+        }
+
+        public void getViewBag()
+        {
+            ViewBag.list = DAL.Login.getData();
+        }
+
         public Message GetMessage()
         {
             Message m = new Message();

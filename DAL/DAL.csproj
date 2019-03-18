@@ -52,9 +52,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Object\Object.csproj">
+    <ProjectReference Include="..\Object\doiTuong.csproj">
       <Project>{89583e89-fd9c-456c-a2e8-f2afae87abb5}</Project>
-      <Name>Object</Name>
+      <Name>doiTuong</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

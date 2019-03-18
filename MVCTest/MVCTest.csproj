@@ -140,6 +140,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Items.cs" />
+    <Compile Include="Models\Home.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -206,9 +207,9 @@
       <Project>{b76f33a0-41a9-40a0-956b-b9e25dbfa50f}</Project>
       <Name>DAL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Object\Object.csproj">
+    <ProjectReference Include="..\Object\doiTuong.csproj">
       <Project>{89583e89-fd9c-456c-a2e8-f2afae87abb5}</Project>
-      <Name>Object</Name>
+      <Name>doiTuong</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

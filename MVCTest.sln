@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCTest.Tests", "MVCTest.Te
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{B76F33A0-41A9-40A0-956B-B9E25DBFA50F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Object", "Object\Object.csproj", "{89583E89-FD9C-456C-A2E8-F2AFAE87ABB5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "doiTuong", "Object\doiTuong.csproj", "{89583E89-FD9C-456C-A2E8-F2AFAE87ABB5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

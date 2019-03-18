@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Object;
+using doiTuong;
 using PagedList.Mvc;
 namespace MVCTest.Models
 {
     public class Items
     {
-        private List<Object.Items> list;
+        private List<doiTuong.Items> list;
 
-        public List<Object.Items> List { get => list; set => list = value; }
-        public List<Object.Items> getList()
+        public List<doiTuong.Items> List { get => list; set => list = value; }
+        public List<doiTuong.Items> getList()
         {
             return list;
         }
